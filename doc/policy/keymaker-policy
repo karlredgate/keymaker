@@ -1,0 +1,14 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sts:GetFederationToken"
+            ],
+            "Resource": [
+                "arn:aws:sts::877348900806:federated-user/*"
+            ]
+        }
+    ]
+}
