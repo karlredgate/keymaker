@@ -1,0 +1,20 @@
+#!/bin/bash
+
+keydir=/usr/share/keymaker/keys
+homedir=~keymaker
+sshdir=$homedir/.ssh
+keyfile=$sshdir/authorized_keys
+
+mkdir -p $sshdir
+chmod 700 $sshdir
+chown keymaker $sshdir
+
+for key in $keydir/*.pub
+do
+    sed -e 's|^|command="/usr/bin/generate-federated-credentials" |' $key
+done > $keyfile
+
+chmod 600 $keyfile
+chown keymaker $keyfile
+
+# vim:autoindent expandtab sw=4

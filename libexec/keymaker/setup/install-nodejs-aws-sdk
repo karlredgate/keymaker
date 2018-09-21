@@ -1,0 +1,14 @@
+#!/bin/bash
+
+function die() {
+    local message="$*"
+    echo "$message" 1>&2
+    exit 1
+}
+
+[ $(id --user) != 0 ] && die "Must be run as root"
+
+npm install --global inherits 2>&1 | logger -t npm-install
+npm install --global aws-sdk  2>&1 | logger -t npm-install
+
+# vim:autoindent expandtab sw=4
